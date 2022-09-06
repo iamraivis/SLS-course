@@ -1,0 +1,37 @@
+service: visma-serverless-course
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: eu-west-1
+  stage: TEST
+  versionFunctions: false
+  apiGateway:
+    apiKeys:
+      - testKey
+
+frameworkVersion: '3'
+
+package:
+  include:
+   - "./src/**"
+  exclude:
+   - node_modules/**
+   - venv/**
+
+functions:
+  hello:
+    handler: src/handler.hello
+    events:
+      - http:
+          path: /hello
+          method: get
+          private: true
+
+  calculatorv2:
+    handler: src/calculatorv2.lambda_handler
+    events:
+    - http:
+        path: /calculatorv2
+        method: post
+        private: true
