@@ -1,4 +1,4 @@
-service: visma-serverless-course
+service: visma-serverless-course-raivis
 
 provider:
   name: aws
