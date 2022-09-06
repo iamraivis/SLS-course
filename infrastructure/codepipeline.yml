@@ -100,7 +100,7 @@ Resources:
       Stages:
         - Name: Source
           Actions:
-          - Name: SLS-Course
+          - Name: SLS-course
             ActionTypeId:
               Category: Source
               Owner: ThirdParty
@@ -108,7 +108,7 @@ Resources:
               Provider: GitHub
             Configuration:
               Owner: iamraivis
-              Repo: SLS-Course
+              Repo: SLS-course
               Branch: main
               PollForSourceChanges: false
               OAuthToken: '{{resolve:secretsmanager:GITHUB_ACCESS_TOKEN:SecretString:GITHUB_ACCESS_TOKEN}}'
@@ -143,7 +143,7 @@ Resources:
         MatchEquals: 'refs/heads/main'
       Authentication: GITHUB_HMAC
       TargetPipeline: !Ref slsBackendPipeline
-      TargetAction: SLS-Course
+      TargetAction: SLS-course
       Name: "backendPipelineWebhook"
       TargetPipelineVersion: !GetAtt slsBackendPipeline.Version
       RegisterWithThirdParty: 'true'
